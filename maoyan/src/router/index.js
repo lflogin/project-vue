@@ -9,7 +9,7 @@ const routes = [
     path: '/',
     name: 'index',
     component: () => import(/* webpackChunkName: "about" */ '../views/index.vue'),
-    redirect: '/yingyuan',
+    redirect: '/moive/tab1',
     children: [
       {
         path: 'moive',
@@ -18,13 +18,13 @@ const routes = [
         redirect: '/moive/tab1',
         children: [
           {
-            path: 'tab1',
-            name: 'tab1',
+            path: '/moive/tab1',
+            name: 'moive/tab1',
             component: () => import(/* webpackChunkName: "about" */ '../views/page/Tab1.vue')
           },
           {
-            path: 'tab2',
-            name: 'tab2',
+            path: '/moive/tab2',
+            name: 'moive/tab2',
             component: () => import(/* webpackChunkName: "about" */ '../views/page/Tab2.vue')
           }
         ]

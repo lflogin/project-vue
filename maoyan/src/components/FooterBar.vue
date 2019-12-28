@@ -1,8 +1,8 @@
 <template>
   <div class="app-footer">
-    <router-link to="moive">电影</router-link>
-    <router-link to="yingyuan">影院</router-link>
-    <router-link to="mine">我的</router-link>
+    <router-link to="/moive">电影</router-link>
+    <router-link to="/yingyuan">影院</router-link>
+    <router-link to="/mine">我的</router-link>
   </div>
 </template>
 
