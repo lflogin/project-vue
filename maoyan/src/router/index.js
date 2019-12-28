@@ -9,10 +9,10 @@ const routes = [
     path: '/',
     name: 'index',
     component: () => import(/* webpackChunkName: "about" */ '../views/index.vue'),
-    redirect: '/mine',
+    redirect: '/yingyuan',
     children: [
       {
-        path: '/moive',
+        path: 'moive',
         name: 'moive',
         component: () => import(/* webpackChunkName: "about" */ '../views/Moive.vue'),
         redirect: '/moive/tab1',
@@ -30,24 +30,51 @@ const routes = [
         ]
       },
       {
-        path: '/yingyuan',
+        path: 'yingyuan',
         name: 'yingyuan',
         component: () => import(/* webpackChunkName: "about" */ '../views/Yingyuan.vue')
       },
       {
-        path: '/mine',
+        path: 'mine',
         name: 'mine',
-        component: () => import(/* webpackChunkName: "about" */ '../views/Mine.vue')
+        component: () => import(/* webpackChunkName: "about" */ '../views/Mine.vue'),
+        meta: {
+          requireAuth: true
+        }
+      },
+      {
+        path: 'login',
+        name: 'login',
+        component: () => import(/* webpackChunkName: "about" */ '../views/Login.vue')
       }
     ]
-  },
+  }
  
 ]
+
+
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to,from,next)=>{
+  if(to.meta.requireAuth) {
+    if(localStorage.getItem('key')) {
+      next()
+    } else {
+      next({
+        path: '/login',
+        query: {
+          path: to.fullPath
+        }
+      })
+    }
+  } else {
+      next()
+  }
 })
 
 export default router

@@ -8,10 +8,16 @@
   </div>
 </template>
 <script>
+import { mapState, mapActions } from 'vuex'
 export default {
+ 
+  computed: mapState({
+    list: state => state.list
+  }),
+
   data() {
     return {
-      list: []
+      // list: []
     }
   },
 
@@ -20,11 +26,15 @@ export default {
   },
 
   methods: {
+    ...mapActions([
+      'toleftlist'
+    ]),
     getmock() {
-      this.$http.get('/api/mock').then(res=>{
+      // this.$http.get('/api/mock').then(res=>{
         // console.log(res.data.coming)
-        this.list = res.data.coming
-      })
+        // this.$store.commit('toleftlist',res.data.coming)
+      // })
+      this.toleftlist()
     }
   },
 

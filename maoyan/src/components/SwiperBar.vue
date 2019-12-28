@@ -26,8 +26,8 @@ export default {
     return {
        swiperOption: {
            autoplay:true,
-         slidesPerView: 4,  //每页显示几个
-         spaceBetween: 10,  //之间的间距
+           slidesPerView: 4,  //每页显示几个
+           spaceBetween: 10,  //之间的间距
         }
     }
   },
